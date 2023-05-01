@@ -1,6 +1,15 @@
 <?php
     require 'db.php';
 
+    // check db
+    $result = $conn->query("SHOW TABLES LIKE 'payloads'");
+    $tableExists = $result->num_rows > 0;
+    $result->close();
+
+    if (!$tableExists) {
+        echo "<div class='alert alert-warning'>DB needs to be initialized. Click <a href='reset.php'>reset.php</a> to initialize the database.</div>";
+    }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $payload = $_POST['payload'];
         $description = $_POST['description'];
@@ -102,7 +111,6 @@
         <h2 class="my-4">Application actions</h2>
         <button onclick="setDemoCookie()" class="btn btn-primary">Set Demo Cookie</button>
         <a href="reset.php" class="btn btn-danger">Reset Database</a>
-
     </div>
 
 <!-- Bootstrap JavaScript -->
