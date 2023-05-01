@@ -5,8 +5,8 @@ This app is obviously not secure, don't do things like expose it to the internet
 
 # How to run
 
-Clone the repo
 ```
+git clone https://github.com/AppSecExplained/xss-playground.git
 cd xss-playground
 sudo docker-compose up --build
 ```
